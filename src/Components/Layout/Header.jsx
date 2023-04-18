@@ -1,0 +1,19 @@
+import React from 'react'
+import './Header.Module.css'
+import HeaderCart from './HeaderCart'
+import mealsImg from '../../Assets/meals.jpg'
+const Header = () => {
+  return (
+    <>
+        <header className='head-wrap'>
+        <h2 >MealsHouse</h2>
+        <HeaderCart/>
+        </header>
+        <div className='main-image'>
+            <img src={mealsImg} alt='headerImg'/>
+        </div>
+    </>
+  )
+}
+
+export default Header
