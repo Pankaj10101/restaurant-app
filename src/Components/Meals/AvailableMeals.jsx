@@ -7,25 +7,25 @@ const mealChart = [
     id: "m1",
     name: "Sushi",
     description: "Finest fish veggies",
-    price: "$22",
+    price: 22,
   },
   {
     id: "m2",
     name: "Sushi",
     description: "Finest fish veggies",
-    price: "$22",
+    price: 11,
   },
   {
     id: "m3",
     name: "Sushi",
     description: "Finest fish veggies",
-    price: "$22",
+    price: 37,
   },
   {
     id: "m4",
     name: "Sushi",
     description: "Finest fish veggies",
-    price: "$22",
+    price: 23,
   },
 ];
 
@@ -38,10 +38,10 @@ const AvailableMeals = () => {
             <div>
               <h3>{e.name}</h3>
               <p className="description">{e.description}</p>
-              <h2 className="price">{e.price}</h2>
+              <h2 className="price">${e.price}</h2>
             </div>
             <div>
-            <MealItemForm/>
+            <MealItemForm id={e.id} name={e.name} price ={e.price} />
           </div>
           </div>
         ))}
