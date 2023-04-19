@@ -1,7 +1,7 @@
 import React from 'react'
 import './Cart.css'
 import Modal from '../UI/Modal'
-const Cart = () => {
+const Cart = (props) => {
     const CartItems =(<ul className='cart-items'> {[{id:'c1', name:'Sushi', amount:1, price:12 }].map((item)=> <li>{item.name}</li>)}</ul>)
   return (
     <Modal>
@@ -11,7 +11,7 @@ const Cart = () => {
             <span>12</span>
         </div>
         <div className='actions'>
-            <button className='close' >Close</button>
+            <button onClick={props.onHideCart} className='close' >Close</button>
             <button className='order'>Order</button>
         </div>
     </Modal>
