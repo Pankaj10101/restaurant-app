@@ -5,6 +5,23 @@ import CartItem from "./CartItem";
 import CartContext from "../../store/cart-context";
 const Cart = (props) => {
   const cartCtx = useContext(CartContext);
+
+  const addItemToCart = (item) => {
+    if(item.amount<5){
+      cartCtx.updateItem(item.id, item.amount + 1);
+    }
+  };
+  const removeItemFromCart=(item)=>{
+    if(item.amount>1){
+      cartCtx.updateItem(item.id, item.amount -1);
+    }else{
+      cartCtx.updateItem(item.id, item.amount -1);
+      cartCtx.removeItem(item.id)
+
+    }
+   }
+
+   
   const cartItems = (
     <ul className="cart-items">
       {cartCtx.items.map((item) => (
@@ -13,7 +30,8 @@ const Cart = (props) => {
           name={item.name}
           amount={item.amount}
           price={item.price}
-          onRemove={() => cartCtx.removeItem(item.id)}
+          onRemove={()=>removeItemFromCart(item)}
+          onAdd = {()=>addItemToCart(item)}
         />
       ))}
     </ul>
@@ -34,12 +52,11 @@ const Cart = (props) => {
         <button
           onClick={() => {
             alert("Order placed!");
-            cartCtx.clearCart();
           }}
           className="order"
           disabled={cartCtx.items.length === 0}
         >
-          Order
+          Order 
         </button>
       </div>
     </Modal>

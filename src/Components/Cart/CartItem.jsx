@@ -3,7 +3,6 @@ import './CartItem.css';
 
 const CartItem = (props) => {
   const price = `$${props.price}`;
-console.log(props)
   return (
     <li className="cart-item">
       <div>

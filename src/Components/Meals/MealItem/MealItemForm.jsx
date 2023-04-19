@@ -9,12 +9,18 @@ const MealItemForm = (props) => {
   const [amount, setAmount] = useState(1);
   const addItemToCart = (e) => {
     e.preventDefault();
-    cartCtx.addItem({
-      id: props.id,
-      name: props.name,
-      amount: amount,
-      price: props.price,
-    });
+    const existingCartItem = cartCtx.items.find(item => item.id === props.id);
+
+    if (existingCartItem) {
+      cartCtx.updateItem(props.id, existingCartItem.amount + amount);
+    } else {
+      cartCtx.addItem({
+        id: props.id,
+        name: props.name,
+        amount: amount,
+        price: props.price,
+      });
+    }
   };
 
 
